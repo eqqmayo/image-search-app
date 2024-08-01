@@ -12,6 +12,30 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  final _scrollController = ScrollController();
+  final _textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    _scrollController.addListener(_onScroll);
+    super.initState();
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      context.read<SearchViewModel>().loadImages(_textEditingController.text);
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<SearchViewModel>();
@@ -25,6 +49,7 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: CustomSearchBar(
+              textEditingController: _textEditingController,
               onSearch: (keyword) {
                 viewModel.searchImages(keyword);
               },
@@ -35,6 +60,7 @@ class _SearchScreenState extends State<SearchScreen> {
       body: Stack(
         children: [
           GridView(
+              controller: _scrollController,
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

@@ -19,7 +19,7 @@ class DetailScreen extends StatelessWidget {
             tag: image.id,
             child: Image.network(image.imageUrl),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             'User: ${image.user}',
             style: const TextStyle(

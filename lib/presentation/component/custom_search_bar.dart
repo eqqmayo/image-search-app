@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
+  final TextEditingController textEditingController;
   final Function(String) onSearch;
 
   const CustomSearchBar({
     super.key,
     required this.onSearch,
+    required this.textEditingController,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: textEditingController,
       onSubmitted: onSearch,
       decoration: InputDecoration(
         hintText: 'Search image',

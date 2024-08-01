@@ -10,13 +10,23 @@ class SearchViewModel with ChangeNotifier {
 
   SearchViewModel(this._imageRepository);
 
-  void searchImages(String keyword) async {
-    _state = state.copyWith(isLoading: true);
+  void searchImages(String keyword) {
+    if (state.keyword != keyword) {
+      _state = SearchUiState(keyword: keyword);
+    }
+    loadImages(keyword);
+  }
+
+  void loadImages(String keyword) async {
+    _state = state.copyWith(
+      isLoading: true,
+      page: state.page + 1,
+    );
     notifyListeners();
 
-    final images = await _imageRepository.getImages(keyword);
+    final images = await _imageRepository.getImages(keyword, state.page);
     _state = state.copyWith(
-      images: images,
+      images: [...state.images, ...images],
       isLoading: false,
     );
     notifyListeners();
