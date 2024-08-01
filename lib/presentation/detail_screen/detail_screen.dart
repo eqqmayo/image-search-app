@@ -12,12 +12,14 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           Hero(
             tag: image.id,
             child: Image.network(image.imageUrl),
           ),
+          SizedBox(height: 20),
           Text(
             'User: ${image.user}',
             style: const TextStyle(
