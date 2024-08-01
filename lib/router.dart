@@ -1,10 +1,10 @@
 import 'package:go_router/go_router.dart';
-import 'package:image_search_app/data_source/image_data_source.dart';
-import 'package:image_search_app/model/image.dart';
+import 'package:image_search_app/data/data_source/image_data_source.dart';
+import 'package:image_search_app/domain/model/image.dart';
 import 'package:image_search_app/presentation/detail_screen/detail_screen.dart';
 import 'package:image_search_app/presentation/search_screen/search_screen.dart';
 import 'package:image_search_app/presentation/search_screen/search_view_model.dart';
-import 'package:image_search_app/repository/image_repository.dart';
+import 'package:image_search_app/data/repository/image_repository_impl.dart';
 import 'package:provider/provider.dart';
 
 final router = GoRouter(

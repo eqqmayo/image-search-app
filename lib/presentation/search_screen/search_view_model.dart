@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:image_search_app/domain/repository/image_repository.dart';
 import 'package:image_search_app/presentation/search_screen/search_ui_state.dart';
-import 'package:image_search_app/repository/image_repository.dart';
 
 class SearchViewModel with ChangeNotifier {
   final ImageRepository _imageRepository;

@@ -1,10 +1,7 @@
-import 'package:image_search_app/data_source/image_data_source.dart';
-import 'package:image_search_app/mapper/image_mapper.dart';
-import 'package:image_search_app/model/image.dart';
-
-abstract interface class ImageRepository {
-  Future<List<Image>> getImages(String keyword);
-}
+import 'package:image_search_app/data/data_source/image_data_source.dart';
+import 'package:image_search_app/data/mapper/image_mapper.dart';
+import 'package:image_search_app/domain/model/image.dart';
+import 'package:image_search_app/domain/repository/image_repository.dart';
 
 class ImageRepositoryImpl implements ImageRepository {
   final ImageDataSource _imageDataSource;

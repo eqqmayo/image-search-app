@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:image_search_app/model/image.dart';
+import 'package:image_search_app/domain/model/image.dart';
 
 part 'search_ui_state.freezed.dart';
 

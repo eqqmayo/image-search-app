@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:image_search_app/dto/image_dto.dart';
+import 'package:image_search_app/data/dto/image_dto.dart';
 import 'package:http/http.dart' as http;
 
 class ImageDataSource {
