@@ -32,30 +32,31 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
       ),
-      body: Expanded(
-        child: Stack(
-          children: [
-            GridView(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
-                children: viewModel.state.images
-                    .map(
-                      (image) => GestureDetector(
+      body: Stack(
+        children: [
+          GridView(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              children: viewModel.state.images
+                  .map(
+                    (image) => Hero(
+                      tag: image.id,
+                      child: GestureDetector(
                         onTap: () {
                           context.push('/detail_screen', extra: image);
                         },
                         child: Image.network(image.imageUrl),
                       ),
-                    )
-                    .toList()),
-            if (viewModel.state.isLoading)
-              const Center(child: CircularProgressIndicator()),
-          ],
-        ),
+                    ),
+                  )
+                  .toList()),
+          if (viewModel.state.isLoading)
+            const Center(child: CircularProgressIndicator()),
+        ],
       ),
     );
   }

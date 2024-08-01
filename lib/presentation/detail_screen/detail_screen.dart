@@ -14,7 +14,10 @@ class DetailScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Image.network(image.imageUrl),
+          Hero(
+            tag: image.id,
+            child: Image.network(image.imageUrl),
+          ),
           Text(
             'User: ${image.user}',
             style: const TextStyle(
